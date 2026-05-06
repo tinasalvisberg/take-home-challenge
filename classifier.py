@@ -1,5 +1,6 @@
 from sentence_transformers import SentenceTransformer
 from sklearn.metrics.pairwise import cosine_similarity
+from scipy.special import softmax
 import numpy as np
 
 reference_sentences = {
@@ -34,5 +35,11 @@ def classify(text: str) -> dict:
         similarities = cosine_similarity(input_vec, ref_vecs)
         scores[label] = float(np.mean(similarities))
 
-    best_label = max(scores, key=scores.get)
-    return {"label": best_label, "confidence": round(scores[best_label], 2)}
+    labels = list(scores.keys())
+    score_values = np.array(list(scores.values()))
+    probs = softmax(score_values)
+
+    best_index = int(np.argmax(probs))
+    best_label = labels[best_index]
+    confidence = float(probs[best_index])
+    return {"label": best_label, "confidence": round(confidence, 2)}

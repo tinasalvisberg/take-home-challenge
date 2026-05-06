@@ -72,7 +72,12 @@ curl -X POST http://localhost:8000/analyze -H "Content-Type: application/json" -
 ## How it works :gear:
 The API service is based on Flask and uses the [all-MiniLM-L6-v2](https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2) sentence transformer model.
 
-The classifier computes cosine similarity of the entered sentences
+1. Reference texts have been created and embedded in the model
+2. When the user inputs a text, it is embedded as well
+3. The cosine similarity is computed between the user's text and the reference texts
+4. For each label the similarity scores are averaged (between all the individual reference text to user text scores)
+5. The highest similarity label is returned to the user
+6. The confidence is computed by taking the softmax of the similarity scores of the labels
 
 ## Support :paperclip:
 If you have a suggestion or found a bug, please open an issue.
