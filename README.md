@@ -55,9 +55,9 @@ curl -X POST http://localhost:8000/analyze -H "Content-Type: application/json" -
 > If you are on a Windows machine, you might need to replace curl with curl.exe or use the Powershell with the command below:
 > ```
 > Invoke-WebRequest -Uri http://localhost:8000/analyze `
->>   -Method POST `
->>   -ContentType "application/json" `
->>   -Body '{"text": "I have chest pain and shortness of breath."}'
+>   -Method POST `
+>   -ContentType "application/json" `
+>   -Body '{"text": "I have chest pain and shortness of breath."}'
 > ```
 
 
