@@ -1,1 +1,4 @@
+flask
 sentence-transformers
+scikit-learn
+numpy
