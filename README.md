@@ -1,7 +1,7 @@
 # Lightweight AI REST Service
 
-This is a small proof of concept for a text-based classifier. You can enter a sentence and get a prediction of 
-what you said about your health state should be followed up. Possible outcome labels are: `low_concern`, `needs_follow_up` and `urgent_review`.
+This is a small proof of concept for a text-based classifier. You can enter some text and get a prediction if
+what you said about your health state should be followed up on. Possible outcome labels are: `low_concern`, `needs_follow_up` and `urgent_review`.
 
 Disclaimer: this is a technical prototype and NOT a medical product. Please do not use this to self-diagnose.
 
