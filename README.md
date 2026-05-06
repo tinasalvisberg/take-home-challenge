@@ -1,1 +1,44 @@
-# take-home-challenge-internal
+# Lightweight AI REST Service
+
+This is a small proof of concept for a text-based classifier. You can enter a sentence and get a prediction if 
+what you said about your health state is of low concern, needs follow-up or urgent review. 
+
+Disclaimer: this is a technical prototype and NOT a medical product. Please do not use this to self-diagnose.
+
+## Getting started :seedling:
+### Prerequisites
+* you need to have a Docker installation
+
+### Steps
+1. Clone the repository
+2. Build and run the docker container
+```
+docker build -t health-ai-service .
+docker run --rm -p 8000:8000 health-ai-service
+```
+3. Check the health service status
+```
+curl http://localhost:8000/health
+```
+
+
+## Usage :speech_balloon:
+
+### API Endpoints
+| Method | Endpoint | Description                                                                           |
+|--------|----------|---------------------------------------------------------------------------------------|
+| GET    | /health  | Returns whether the service is running.                                               |
+| POST   | /analyze | Receives a JSON object with a text field and returns a classification and confidence. |
+
+### GET /health
+Returns whether the service is running.
+
+
+
+## How it works :gear:
+The API service is based on Flask and uses the [all-MiniLM-L6-v2](https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2) sentence transformer model.
+
+The classifier computes cosine similarity of the entered sentences
+
+## Support :paperclip:
+If you have a suggestion or found a bug, please open an issue.
